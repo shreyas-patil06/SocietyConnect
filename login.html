@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In — SocietyConnect</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/auth.css" />
+  </head>
+  <body class="auth-page">
+    <a href="/index.html" class="auth-header-brand">
+      <span class="auth-logo-mark">S</span>
+      <span>SocietyConnect</span>
+    </a>
+
+    <main class="auth-card">
+      <h1 class="auth-title">Welcome back</h1>
+      <p class="auth-subtitle">Sign in to access your authorized housing society portal.</p>
+
+      <div id="first-run-admin-banner" class="alert-box alert-info" style="display:none;">
+        No Admin account exists yet.
+        <a href="/register.html?role=admin" style="font-weight:700;text-decoration:underline;">
+          Claim First-Run Admin Account →
+        </a>
+      </div>
+
+      <div id="login-alert"></div>
+
+      <form id="login-form">
+        <div class="form-group">
+          <label class="form-label" for="login-email">Email Address</label>
+          <input
+            id="login-email"
+            type="email"
+            class="form-control"
+            placeholder="name@society.com"
+            required
+            autocomplete="email"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="login-password">Password</label>
+          <input
+            id="login-password"
+            type="password"
+            class="form-control"
+            placeholder="Enter your password"
+            required
+            autocomplete="current-password"
+          />
+        </div>
+
+        <button id="login-submit-btn" type="submit" class="btn btn-primary auth-submit">
+          Sign In
+        </button>
+      </form>
+
+      <div class="auth-footer">
+        New to the society? <a href="/register.html">Create an account</a>
+      </div>
+    </main>
+
+    <a href="/index.html" class="auth-back-link">← Back to SocietyConnect Home</a>
+
+    <script type="module" src="/js/auth/login.js"></script>
+  </body>
+</html>

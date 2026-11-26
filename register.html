@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register — SocietyConnect</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/auth.css" />
+  </head>
+  <body class="auth-page">
+    <a href="/index.html" class="auth-header-brand">
+      <span class="auth-logo-mark">S</span>
+      <span>SocietyConnect</span>
+    </a>
+
+    <main class="auth-card auth-card-wide">
+      <h1 class="auth-title">Create your account</h1>
+      <p class="auth-subtitle">Register as a Resident, Security Guard, or Maintenance Staff member.</p>
+
+      <div id="admin-claim-hint" class="alert-box alert-info" style="display:none;">
+        First-run setup active: you can select <strong>Admin (First-Run Society Setup)</strong> below to initialize society administration.
+      </div>
+
+      <div id="register-alert"></div>
+
+      <form id="register-form">
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label" for="reg-name">Full Name</label>
+            <input id="reg-name" type="text" class="form-control" placeholder="e.g. Aarav Sharma" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-phone">Mobile Number</label>
+            <input id="reg-phone" type="tel" class="form-control" placeholder="e.g. 9876543210" required />
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label" for="reg-email">Email Address</label>
+            <input id="reg-email" type="email" class="form-control" placeholder="aarav@example.com" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-password">Password</label>
+            <input id="reg-password" type="password" class="form-control" placeholder="Min. 6 characters" minlength="6" required />
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label" for="reg-role">Account Role</label>
+            <select id="reg-role" class="form-control" required>
+              <option value="resident">Resident</option>
+              <option value="guard">Security Guard</option>
+              <option value="staff">Maintenance Staff</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-society">Housing Society</label>
+            <select id="reg-society" class="form-control" required></select>
+          </div>
+        </div>
+
+        <div class="form-group" id="reg-flat-group">
+          <label class="form-label" for="reg-flat">Select Wing &amp; Flat</label>
+          <select id="reg-flat" class="form-control"></select>
+        </div>
+
+        <div class="form-group" id="reg-staff-group" style="display:none;">
+          <label class="form-label" for="reg-specialty">Maintenance Specialty</label>
+          <input
+            id="reg-specialty"
+            type="text"
+            class="form-control"
+            placeholder="e.g. Plumbing, Electrical, Lift Technician"
+          />
+        </div>
+
+        <button id="register-submit-btn" type="submit" class="btn btn-primary auth-submit">
+          Create Account
+        </button>
+      </form>
+
+      <div class="auth-footer">
+        Already registered? <a href="/login.html">Sign in here</a>
+      </div>
+    </main>
+
+    <a href="/index.html" class="auth-back-link">← Back to SocietyConnect Home</a>
+
+    <script type="module" src="/js/auth/register.js"></script>
+  </body>
+</html>

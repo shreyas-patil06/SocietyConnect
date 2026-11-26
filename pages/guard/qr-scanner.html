@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR Scanner — SocietyConnect</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/css/guard.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside id="app-sidebar" class="sidebar"></aside>
+      <div class="main-wrapper">
+        <header id="app-topbar" class="topbar"></header>
+        <main class="page-content">
+          <div class="page-header-row">
+            <div>
+              <h1 class="page-title">Gate QR Pass Scanner</h1>
+              <p class="page-subtitle">Scan Resident or Guest QR codes via camera, uploaded image, or manual token.</p>
+            </div>
+          </div>
+
+          <div id="qr-scan-alert"></div>
+
+          <section class="grid-2">
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h2 class="card-title">Camera &amp; Image QR Scanner</h2>
+                  <p class="card-subtitle">Powered by live browser QR detection</p>
+                </div>
+                <div style="display:flex;gap:8px;">
+                  <button id="start-camera-btn" type="button" class="btn btn-sm btn-primary">Start Camera</button>
+                  <button id="stop-camera-btn" type="button" class="btn btn-sm btn-outline">Stop</button>
+                </div>
+              </div>
+
+              <div class="scanner-frame" style="margin:0 auto 16px;">
+                <span id="scanner-placeholder">Click "Start Camera" or upload a QR image below</span>
+                <video id="qr-video" playsinline muted></video>
+                <div class="scanner-reticle"></div>
+              </div>
+              <canvas id="qr-canvas" style="display:none;"></canvas>
+
+              <div class="form-group">
+                <label class="form-label" for="qr-file-input">Or Scan Uploaded QR Image (PNG / JPG)</label>
+                <input id="qr-file-input" type="file" class="form-control" accept="image/*" />
+              </div>
+
+              <form id="manual-qr-form" style="display:flex;gap:8px;align-items:flex-end;">
+                <div class="form-group" style="flex:1;margin-bottom:0;">
+                  <label class="form-label" for="manual-qr-input">Or Enter QR Token Manually</label>
+                  <input id="manual-qr-input" type="text" class="form-control" placeholder="SC-GST-... or SC-RES-..." required />
+                </div>
+                <button type="submit" class="btn btn-outline">Verify Token</button>
+              </form>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h2 class="card-title">Verification Result</h2>
+                  <p class="card-subtitle">Check visitor details before allowing entry</p>
+                </div>
+              </div>
+              <div id="qr-result-panel" class="scan-result-panel">
+                <p style="color:#6B7280;font-size:13.5px;">
+                  Scan or enter a QR code to inspect validity, flat host details, and record check-in or check-out.
+                </p>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script src="/vendor/jsQR.js"></script>
+    <script type="module" src="/js/guard/qr-scanner.js"></script>
+  </body>
+</html>

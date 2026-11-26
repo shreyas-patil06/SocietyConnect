@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Staff &amp; Guards Management — SocietyConnect</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+  </head>
+  <body data-page="admin-staff">
+    <div class="app-shell">
+      <aside id="app-sidebar" class="sidebar"></aside>
+      <div class="main-wrapper">
+        <header id="app-topbar" class="topbar"></header>
+        <main class="page-content">
+          <div class="page-header-row">
+            <div>
+              <h1 class="page-title">Staff &amp; Security Guards Management</h1>
+              <p class="page-subtitle">Create and manage Security Guards, Maintenance Staff, and Admin accounts.</p>
+            </div>
+          </div>
+
+          <section class="bento-grid">
+            <div class="bento-col">
+              <div class="card">
+                <div class="card-header">
+                  <h2 class="card-title">Society Personnel Directory</h2>
+                </div>
+                <div class="table-wrap">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Name &amp; Email</th>
+                        <th>Phone</th>
+                        <th>Role</th>
+                        <th>Specialty</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="admin-team-tbody">
+                      <tr><td colspan="6" class="empty-state">Loading...</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="bento-col">
+              <div class="card">
+                <div class="card-header">
+                  <h2 class="card-title">Add Staff / Guard / Admin</h2>
+                </div>
+                <div id="team-alert"></div>
+                <form id="add-team-form">
+                  <div class="form-group">
+                    <label class="form-label" for="team-name">Full Name</label>
+                    <input id="team-name" type="text" class="form-control" required />
+                  </div>
+                  <div class="form-row-2">
+                    <div class="form-group">
+                      <label class="form-label" for="team-email">Email</label>
+                      <input id="team-email" type="email" class="form-control" required />
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="team-phone">Mobile Number</label>
+                      <input id="team-phone" type="tel" class="form-control" required />
+                    </div>
+                  </div>
+                  <div class="form-row-2">
+                    <div class="form-group">
+                      <label class="form-label" for="team-role">Role</label>
+                      <select id="team-role" class="form-control">
+                        <option value="staff">Maintenance Staff</option>
+                        <option value="guard">Security Guard</option>
+                        <option value="admin">Society Admin</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="team-password">Initial Password</label>
+                      <input id="team-password" type="password" class="form-control" minlength="6" required />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="team-specialty">Specialty / Shift Note</label>
+                    <input id="team-specialty" type="text" class="form-control" placeholder="e.g. Electrician / Main Gate Day Shift" />
+                  </div>
+                  <button type="submit" class="btn btn-primary" style="width:100%;">Create Account</button>
+                </form>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+    <script type="module" src="/js/admin/residents.js"></script>
+  </body>
+</html>

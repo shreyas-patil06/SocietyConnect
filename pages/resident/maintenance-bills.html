@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maintenance Bills &amp; UPI Payments — SocietyConnect</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/css/resident.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside id="app-sidebar" class="sidebar"></aside>
+      <div class="main-wrapper">
+        <header id="app-topbar" class="topbar"></header>
+        <main class="page-content">
+          <div class="page-header-row">
+            <div>
+              <h1 class="page-title">Maintenance Bills &amp; UPI Payments</h1>
+              <p class="page-subtitle">Pay via the society UPI QR code and upload your payment receipt for admin verification.</p>
+            </div>
+          </div>
+
+          <section class="bento-grid" style="margin-bottom:20px;">
+            <div class="bento-col">
+              <div class="card">
+                <div class="card-header">
+                  <h2 class="card-title">My Maintenance Bills</h2>
+                </div>
+                <div class="table-wrap">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Bill Title</th>
+                        <th>Period</th>
+                        <th>Amount</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody id="resident-bills-tbody">
+                      <tr><td colspan="6" class="empty-state">Loading...</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="bento-col">
+              <div class="card">
+                <div class="card-header">
+                  <div>
+                    <h2 class="card-title">Society UPI Payment QR</h2>
+                    <p class="card-subtitle">Scan with any UPI app to pay maintenance</p>
+                  </div>
+                </div>
+                <div class="upi-qr-card">
+                  <img id="society-upi-qr-img" alt="Society UPI QR Code" style="display:none;" />
+                  <p id="society-upi-empty" style="color:#6B7280;font-size:13px;">UPI QR not uploaded by Admin yet.</p>
+                  <span class="qr-token-code" id="society-upi-id">Loading...</span>
+                  <small style="color:#6B7280;">After paying via UPI, click <strong>Upload Receipt</strong> on your bill.</small>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">Payment Receipt Verification History</h2>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Bill</th>
+                    <th>Transaction Ref / UTR</th>
+                    <th>Amount Paid</th>
+                    <th>Verification Status</th>
+                    <th>Admin Remarks</th>
+                    <th>Receipt</th>
+                    <th>Submitted At</th>
+                  </tr>
+                </thead>
+                <tbody id="resident-receipts-tbody">
+                  <tr><td colspan="7" class="empty-state">Loading...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <div id="upload-receipt-modal" class="modal-backdrop">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3 class="modal-title">Upload UPI Payment Receipt</h3>
+          <button id="close-receipt-modal" type="button" class="modal-close">✕</button>
+        </div>
+        <div id="receipt-modal-alert"></div>
+        <p id="pay-bill-summary" style="font-size:13.5px;font-weight:600;color:#2563EB;margin-bottom:14px;"></p>
+        <form id="upload-receipt-form">
+          <input id="pay-bill-id" type="hidden" />
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label" for="pay-tx-ref">UPI Transaction Ref / UTR</label>
+              <input id="pay-tx-ref" type="text" class="form-control" placeholder="e.g. 429108374612" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="pay-amount">Amount Paid (₹)</label>
+              <input id="pay-amount" type="number" step="0.01" min="1" class="form-control" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="pay-receipt-file">Payment Screenshot / PDF</label>
+            <input id="pay-receipt-file" type="file" class="form-control" accept="image/*,application/pdf" required />
+            <div id="pay-receipt-preview" style="margin-top:8px;"></div>
+          </div>
+          <button id="pay-submit-btn" type="submit" class="btn btn-primary" style="width:100%;">
+            Submit Receipt
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script type="module" src="/js/resident/payments.js"></script>
+  </body>
+</html>

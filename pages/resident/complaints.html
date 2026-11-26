@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Complaints — SocietyConnect</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/css/resident.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside id="app-sidebar" class="sidebar"></aside>
+      <div class="main-wrapper">
+        <header id="app-topbar" class="topbar"></header>
+        <main class="page-content">
+          <div class="page-header-row">
+            <div>
+              <h1 class="page-title">Complaints &amp; Maintenance Helpdesk</h1>
+              <p class="page-subtitle">Submit maintenance tickets with optional photo evidence and track resolution.</p>
+            </div>
+          </div>
+
+          <section class="bento-grid">
+            <div class="bento-col">
+              <div class="card">
+                <div class="card-header">
+                  <h2 class="card-title">My Submitted Complaints</h2>
+                </div>
+                <div class="table-wrap">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Complaint</th>
+                        <th>Category</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th>Assigned Staff</th>
+                        <th>Photo</th>
+                        <th>Submitted</th>
+                      </tr>
+                    </thead>
+                    <tbody id="resident-complaints-tbody">
+                      <tr><td colspan="7" class="empty-state">Loading...</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="bento-col">
+              <div class="card">
+                <div class="card-header">
+                  <h2 class="card-title">Submit New Complaint</h2>
+                </div>
+                <div id="complaint-alert"></div>
+                <form id="complaint-form">
+                  <div class="form-group">
+                    <label class="form-label" for="comp-title">Complaint Title</label>
+                    <input id="comp-title" type="text" class="form-control" placeholder="e.g. Bathroom pipe leakage" required />
+                  </div>
+                  <div class="form-row-2">
+                    <div class="form-group">
+                      <label class="form-label" for="comp-category">Category</label>
+                      <select id="comp-category" class="form-control" required>
+                        <option value="Plumbing">Plumbing</option>
+                        <option value="Electrical">Electrical</option>
+                        <option value="Cleaning">Cleaning</option>
+                        <option value="Lift">Lift</option>
+                        <option value="Security">Security</option>
+                        <option value="Parking">Parking</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="comp-priority">Priority</label>
+                      <select id="comp-priority" class="form-control">
+                        <option value="Low">Low</option>
+                        <option value="Medium" selected>Medium</option>
+                        <option value="High">High</option>
+                        <option value="Urgent">Urgent</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="comp-desc">Description</label>
+                    <textarea id="comp-desc" class="form-control" placeholder="Describe the issue and exact location..." required></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="comp-image">Optional Photo (JPG/PNG/WEBP)</label>
+                    <input id="comp-image" type="file" class="form-control" accept="image/*" />
+                    <div id="comp-image-preview" style="margin-top:8px;"></div>
+                  </div>
+                  <button id="complaint-submit-btn" type="submit" class="btn btn-primary" style="width:100%;">
+                    Submit Complaint
+                  </button>
+                </form>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+    <script type="module" src="/js/resident/complaints.js"></script>
+  </body>
+</html>

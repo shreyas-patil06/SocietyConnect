@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard — SocietyConnect</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/css/guard.css" />
+  </head>
+  <body data-page="admin-dashboard">
+    <div class="app-shell">
+      <aside id="app-sidebar" class="sidebar"></aside>
+      <div class="main-wrapper">
+        <header id="app-topbar" class="topbar"></header>
+        <main class="page-content">
+          <div class="page-header-row">
+            <div>
+              <h1 class="page-title">Dashboard</h1>
+              <p class="page-subtitle">Centralized society operations, billing, visitor security, and complaints.</p>
+            </div>
+            <div class="page-actions">
+              <span class="date-pill">Live Society Status</span>
+              <a href="/pages/admin/maintenance-bills.html" class="btn btn-outline">+ Issue Bill</a>
+              <a href="/pages/admin/reports.html" class="btn btn-primary">Export Reports</a>
+            </div>
+          </div>
+
+          <div id="admin-emergency-strip" class="emergency-strip" style="display:none;">
+            <strong id="admin-emergency-text"></strong>
+            <a href="/pages/admin/emergency-alerts.html" class="btn btn-sm btn-danger">View Emergency Alerts</a>
+          </div>
+
+          <section class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <span class="kpi-label">Active Residents</span>
+                <span class="kpi-icon">🏠</span>
+              </div>
+              <div class="kpi-value-row">
+                <span id="kpi-residents" class="kpi-value">0</span>
+              </div>
+              <span id="kpi-flats-sub" class="kpi-sub">0 of 0 flats occupied</span>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <span class="kpi-label">Visitors Inside</span>
+                <span class="kpi-icon">👥</span>
+              </div>
+              <div class="kpi-value-row">
+                <span id="kpi-visitors-inside" class="kpi-value">0</span>
+              </div>
+              <span id="kpi-visitors-total" class="kpi-sub">0 total gate entries</span>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <span class="kpi-label">Open Complaints</span>
+                <span class="kpi-icon">🛠</span>
+              </div>
+              <div class="kpi-value-row">
+                <span id="kpi-open-complaints" class="kpi-value">0</span>
+              </div>
+              <span id="kpi-complaints-sub" class="kpi-sub">0 total tickets logged</span>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <span class="kpi-label">Verified Collections</span>
+                <span class="kpi-icon">₹</span>
+              </div>
+              <div class="kpi-value-row">
+                <span id="kpi-collected" class="kpi-value">₹0</span>
+              </div>
+              <span id="kpi-pending-receipts" class="kpi-sub">0 receipt(s) pending review</span>
+            </div>
+          </section>
+
+          <section class="bento-grid">
+            <div class="bento-col">
+              <div class="card">
+                <div class="card-header">
+                  <div>
+                    <h2 class="card-title">Society Financial &amp; Operations Overview</h2>
+                    <p class="card-subtitle">Real-time collection, pending dues, and active staff</p>
+                  </div>
+                  <a href="/pages/admin/payments.html" class="btn btn-sm btn-outline">Verify Payments</a>
+                </div>
+                <div class="segment-strip" style="margin-top:0;padding-top:0;border-top:none;">
+                  <div class="segment-item">
+                    <div id="seg-collected" class="segment-val">₹0</div>
+                    <div class="segment-label">Verified Maintenance Collected</div>
+                  </div>
+                  <div class="segment-item green">
+                    <div id="seg-pending" class="segment-val">₹0</div>
+                    <div class="segment-label">Outstanding / Unverified Dues</div>
+                  </div>
+                  <div class="segment-item amber">
+                    <div id="seg-staff" class="segment-val">0</div>
+                    <div class="segment-label">Active Guards &amp; Staff</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div>
+                    <h2 class="card-title">Recent Resident Complaints</h2>
+                  </div>
+                  <a href="/pages/admin/complaints.html" class="btn btn-sm btn-outline">Assign Staff</a>
+                </div>
+                <div class="table-wrap">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Issue</th>
+                        <th>Category</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th>Logged</th>
+                      </tr>
+                    </thead>
+                    <tbody id="admin-recent-complaints-tbody">
+                      <tr><td colspan="5" class="empty-state">Loading...</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="bento-col">
+              <div class="card">
+                <div class="card-header">
+                  <div>
+                    <h2 class="card-title">Most Active Visitor Days</h2>
+                    <p class="card-subtitle">Last 7 days gate check-ins</p>
+                  </div>
+                </div>
+                <div id="visitor-bar-chart" class="bar-chart"></div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div>
+                    <h2 class="card-title">Complaint Resolution Rate</h2>
+                  </div>
+                </div>
+                <div id="resolution-gauge" class="gauge-wrap"></div>
+                <div style="text-align:center;margin-top:12px;">
+                  <a href="/pages/admin/complaints.html" class="btn btn-sm btn-outline">Show Details</a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+    <script type="module" src="/js/admin/dashboard.js"></script>
+  </body>
+</html>

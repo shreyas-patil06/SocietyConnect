@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SocietyConnect — Smart Housing Society Management System</title>
+    <meta
+      name="description"
+      content="Smart Housing Society Management System with QR/OTP Visitor Security, Complaint Tracking, Maintenance Billing, and Emergency Alerts."
+    />
+    <meta property="og:title" content="SocietyConnect — Smart Housing Society Management System" />
+    <meta
+      property="og:description"
+      content="Smart Housing Society Management System with QR/OTP Visitor Security, Complaint Tracking, Maintenance Billing, and Emergency Alerts."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body class="landing-body">
+    <header class="landing-hero">
+      <nav class="landing-nav">
+        <a href="/index.html" class="landing-brand">
+          <span class="landing-brand-dot"></span>
+          <span>SocietyConnect</span>
+        </a>
+        <div class="landing-links">
+          <a href="#features">Features</a>
+          <a href="#portals">Role Portals</a>
+          <a href="/login.html">Security Gate</a>
+          <a href="/register.html">Join Society</a>
+        </div>
+        <div class="landing-nav-actions">
+          <a href="/login.html" class="landing-login-btn">Sign In</a>
+          <a href="/register.html" class="landing-register-btn">Get Started</a>
+        </div>
+      </nav>
+
+      <div class="landing-hero-inner">
+        <h1 class="landing-hero-title">Make Your Society More Connected &amp; Secure</h1>
+        <p class="landing-hero-sub">
+          Digitize gate security with cryptographic QR &amp; OTP passes, streamline maintenance complaints,
+          verify UPI maintenance payments, and coordinate instant emergency response.
+        </p>
+        <a href="/login.html" class="landing-pill-bar">
+          <span>Access Resident, Guard, Staff or Admin Portal</span>
+          <span class="landing-pill-cta">→</span>
+        </a>
+      </div>
+    </header>
+
+    <section id="features" class="landing-why">
+      <h2 class="landing-why-heading">Why<br />Choosing Us</h2>
+
+      <div class="landing-why-item">
+        <h3>QR &amp; OTP Gate Security</h3>
+        <p>
+          Residents generate unique personal and single-use guest QR passes. Guards scan passes at the gate
+          and verify unexpected walk-in visitors with resident approval plus 6-digit OTPs.
+        </p>
+        <a href="/register.html" class="landing-more-link">More Info →</a>
+      </div>
+
+      <div class="landing-why-item">
+        <h3>Transparent UPI Billing</h3>
+        <p>
+          Admins publish monthly maintenance bills and society UPI QR codes. Residents upload payment
+          screenshots for verified digital receipts and zero paperwork.
+        </p>
+        <a href="/login.html" class="landing-more-link">More Info →</a>
+      </div>
+
+      <div class="landing-why-item">
+        <h3>Emergency &amp; Helpdesk</h3>
+        <p>
+          Residents submit photo-backed maintenance complaints tracked by assigned staff, and trigger
+          instant emergency alerts straight to guards and admins.
+        </p>
+        <a href="/login.html" class="landing-more-link">More Info →</a>
+      </div>
+    </section>
+
+    <section id="portals" class="landing-showcase">
+      <div class="landing-showcase-inner">
+        <h2 class="landing-showcase-title">Built For Every Society Role</h2>
+
+        <div class="landing-role-tabs" id="role-filter-tabs">
+          <button type="button" class="landing-role-tab active" data-filter="all">All Portals</button>
+          <button type="button" class="landing-role-tab" data-filter="resident">Resident</button>
+          <button type="button" class="landing-role-tab" data-filter="guard">Security Guard</button>
+          <button type="button" class="landing-role-tab" data-filter="staff">Maintenance Staff</button>
+          <button type="button" class="landing-role-tab" data-filter="admin">Admin</button>
+        </div>
+
+        <div class="landing-role-cards" id="role-portal-cards">
+          <article class="landing-role-card" data-role="resident">
+            <div>
+              <span class="role-tag">Portal 01</span>
+              <h4>Resident Dashboard</h4>
+              <ul>
+                <li>• Personal Gate QR &amp; Guest Pass Generator</li>
+                <li>• Walk-In Visitor Approval Alerts</li>
+                <li>• Complaints, UPI Bills &amp; Emergency SOS</li>
+              </ul>
+            </div>
+            <div class="landing-role-card-foot">
+              <span style="font-weight:700;color:#1E1E1E;">Flat Members</span>
+              <a href="/login.html" class="landing-plus-btn" title="Open Resident Login">+</a>
+            </div>
+          </article>
+
+          <article class="landing-role-card" data-role="guard">
+            <div>
+              <span class="role-tag">Portal 02</span>
+              <h4>Security Guard Gate</h4>
+              <ul>
+                <li>• Camera &amp; Image QR Pass Scanner</li>
+                <li>• Walk-In Resident Approval + OTP Gate</li>
+                <li>• Check-In/Out Logs &amp; Emergency Dispatch</li>
+              </ul>
+            </div>
+            <div class="landing-role-card-foot">
+              <span style="font-weight:700;color:#1E1E1E;">Gate Personnel</span>
+              <a href="/login.html" class="landing-plus-btn" title="Open Guard Login">+</a>
+            </div>
+          </article>
+
+          <article class="landing-role-card" data-role="staff">
+            <div>
+              <span class="role-tag">Portal 03</span>
+              <h4>Maintenance Staff</h4>
+              <ul>
+                <li>• View Assigned Society Tickets</li>
+                <li>• Accept &amp; Update Repair Progress</li>
+                <li>• Attach Notes &amp; Mark Resolved</li>
+              </ul>
+            </div>
+            <div class="landing-role-card-foot">
+              <span style="font-weight:700;color:#1E1E1E;">Technicians</span>
+              <a href="/login.html" class="landing-plus-btn" title="Open Staff Login">+</a>
+            </div>
+          </article>
+
+          <article class="landing-role-card" data-role="admin">
+            <div>
+              <span class="role-tag">Portal 04</span>
+              <h4>Society Admin</h4>
+              <ul>
+                <li>• Manage Flats, Residents &amp; Staff</li>
+                <li>• Assign Complaints &amp; Priorities</li>
+                <li>• Issue Bills &amp; Verify UPI Receipts</li>
+              </ul>
+            </div>
+            <div class="landing-role-card-foot">
+              <span style="font-weight:700;color:#1E1E1E;">Committee</span>
+              <a href="/login.html" class="landing-plus-btn" title="Open Admin Login">+</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <footer class="landing-footer">
+      SocietyConnect — Smart Housing Society Management System
+    </footer>
+
+    <script type="module">
+      const tabs = document.querySelectorAll('.landing-role-tab');
+      const cards = document.querySelectorAll('.landing-role-card');
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          tabs.forEach((t) => t.classList.remove('active'));
+          tab.classList.add('active');
+          const filter = tab.getAttribute('data-filter');
+          cards.forEach((c) => {
+            c.style.display = filter === 'all' || c.getAttribute('data-role') === filter ? 'flex' : 'none';
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

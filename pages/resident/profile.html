@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Profile — SocietyConnect</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/css/resident.css" />
+  </head>
+  <body data-page="resident-profile">
+    <div class="app-shell">
+      <aside id="app-sidebar" class="sidebar"></aside>
+      <div class="main-wrapper">
+        <header id="app-topbar" class="topbar"></header>
+        <main class="page-content">
+          <div class="page-header-row">
+            <div>
+              <h1 class="page-title">My Profile &amp; Gate Pass</h1>
+              <p class="page-subtitle">Manage your personal contact information, password, and digital QR pass.</p>
+            </div>
+          </div>
+
+          <section class="grid-2">
+            <div class="card">
+              <div class="card-header">
+                <h2 class="card-title">Personal Information</h2>
+              </div>
+              <div id="profile-alert"></div>
+              <form id="profile-update-form">
+                <div class="form-group">
+                  <label class="form-label" for="prof-name">Full Name</label>
+                  <input id="prof-name" type="text" class="form-control" required />
+                </div>
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label class="form-label" for="prof-email">Email</label>
+                    <input id="prof-email" type="email" class="form-control" disabled />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="prof-phone">Mobile Number</label>
+                    <input id="prof-phone" type="tel" class="form-control" required />
+                  </div>
+                </div>
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label class="form-label" for="prof-society">Society</label>
+                    <input id="prof-society" type="text" class="form-control" disabled />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="prof-flat">Assigned Flat</label>
+                    <input id="prof-flat" type="text" class="form-control" disabled />
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+              </form>
+            </div>
+
+            <div class="bento-col">
+              <div class="card">
+                <div class="card-header">
+                  <h2 class="card-title">Personal Resident QR Pass</h2>
+                </div>
+                <div class="qr-pass-box">
+                  <img id="profile-qr-img" alt="Personal QR" />
+                  <span id="profile-qr-token" class="qr-token-code">Loading...</span>
+                  <button id="profile-regen-qr-btn" type="button" class="btn btn-sm btn-outline">
+                    Regenerate Security Token
+                  </button>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <h2 class="card-title">Change Password</h2>
+                </div>
+                <div id="password-alert"></div>
+                <form id="password-update-form">
+                  <div class="form-group">
+                    <label class="form-label" for="curr-password">Current Password</label>
+                    <input id="curr-password" type="password" class="form-control" required />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="new-password">New Password</label>
+                    <input id="new-password" type="password" class="form-control" minlength="6" required />
+                  </div>
+                  <button type="submit" class="btn btn-outline">Update Password</button>
+                </form>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+    <script type="module" src="/js/resident/dashboard.js"></script>
+  </body>
+</html>

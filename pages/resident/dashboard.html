@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resident Dashboard — SocietyConnect</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/css/resident.css" />
+  </head>
+  <body data-page="resident-dashboard">
+    <div class="app-shell">
+      <aside id="app-sidebar" class="sidebar"></aside>
+      <div class="main-wrapper">
+        <header id="app-topbar" class="topbar"></header>
+        <main class="page-content">
+          <div class="page-header-row">
+            <div>
+              <h1 class="page-title">Resident Dashboard</h1>
+              <p class="page-subtitle">Your digital gate pass, visitors, complaints, and maintenance summary.</p>
+            </div>
+            <div class="page-actions">
+              <a href="/pages/resident/emergency.html" class="btn btn-soft-danger">Emergency SOS</a>
+              <a href="/pages/resident/visitors.html" class="btn btn-primary">+ Invite Guest</a>
+            </div>
+          </div>
+
+          <div id="walkin-alert-banner" class="alert-box alert-info" style="display:none;align-items:center;justify-content:space-between;gap:12px;">
+            <span id="walkin-alert-text"></span>
+            <a href="/pages/resident/visitors.html" class="btn btn-sm btn-primary">Review Walk-In Request</a>
+          </div>
+
+          <section class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <span class="kpi-label">Active Guest Passes</span>
+                <span class="kpi-icon">QR</span>
+              </div>
+              <div class="kpi-value-row">
+                <span id="kpi-active-passes" class="kpi-value">0</span>
+                <span class="kpi-delta neutral">Live</span>
+              </div>
+              <span id="kpi-walkins-sub" class="kpi-sub">0 walk-in approval(s) pending</span>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <span class="kpi-label">Visitor Logs</span>
+                <span class="kpi-icon">👥</span>
+              </div>
+              <div class="kpi-value-row">
+                <span id="kpi-total-visits" class="kpi-value">0</span>
+              </div>
+              <span class="kpi-sub">Total flat gate entries recorded</span>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <span class="kpi-label">Open Complaints</span>
+                <span class="kpi-icon">🛠</span>
+              </div>
+              <div class="kpi-value-row">
+                <span id="kpi-open-complaints" class="kpi-value">0</span>
+              </div>
+              <span class="kpi-sub">Active maintenance requests</span>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <span class="kpi-label">Pending Dues</span>
+                <span class="kpi-icon">₹</span>
+              </div>
+              <div class="kpi-value-row">
+                <span id="kpi-pending-dues" class="kpi-value">₹0</span>
+              </div>
+              <span id="kpi-bills-sub" class="kpi-sub">0 unpaid bill(s)</span>
+            </div>
+          </section>
+
+          <section class="bento-grid">
+            <div class="bento-col">
+              <div class="card">
+                <div class="card-header">
+                  <div>
+                    <h2 class="card-title">Recent Visitor Check-Ins &amp; Exits</h2>
+                    <p class="card-subtitle">Live activity for your flat</p>
+                  </div>
+                  <a href="/pages/resident/visitors.html" class="btn btn-sm btn-outline">Manage Visitors</a>
+                </div>
+                <div class="table-wrap">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Visitor</th>
+                        <th>Method</th>
+                        <th>Check In</th>
+                        <th>Check Out</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody id="recent-logs-tbody">
+                      <tr><td colspan="5" class="empty-state">Loading...</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div>
+                    <h2 class="card-title">Recent Complaints</h2>
+                    <p class="card-subtitle">Status updates from maintenance team</p>
+                  </div>
+                  <a href="/pages/resident/complaints.html" class="btn btn-sm btn-outline">View All</a>
+                </div>
+                <div class="table-wrap">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Issue</th>
+                        <th>Category</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody id="recent-complaints-tbody">
+                      <tr><td colspan="4" class="empty-state">Loading...</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="bento-col">
+              <div class="card">
+                <div class="card-header">
+                  <div>
+                    <h2 class="card-title">My Personal Gate QR</h2>
+                    <p class="card-subtitle">Show at society gate for instant entry</p>
+                  </div>
+                </div>
+                <div class="qr-pass-box">
+                  <img id="resident-qr-img" alt="Personal Resident QR Code" />
+                  <span id="resident-qr-token" class="qr-token-code">Loading...</span>
+                  <button id="regen-qr-btn" class="btn btn-sm btn-outline" style="margin-top:6px;">
+                    Regenerate Personal QR
+                  </button>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <h2 class="card-title">Quick Links</h2>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                  <a href="/pages/resident/maintenance-bills.html" class="btn btn-outline">Pay Maintenance Bill (UPI)</a>
+                  <a href="/pages/resident/complaints.html" class="btn btn-outline">Raise Maintenance Complaint</a>
+                  <a href="/pages/resident/notifications.html" class="btn btn-outline">View All Notifications</a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+    <script type="module" src="/js/resident/dashboard.js"></script>
+  </body>
+</html>

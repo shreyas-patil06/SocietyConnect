@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maintenance Bills &amp; UPI QR — SocietyConnect</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/css/admin.css" />
+  </head>
+  <body data-page="admin-bills">
+    <div class="app-shell">
+      <aside id="app-sidebar" class="sidebar"></aside>
+      <div class="main-wrapper">
+        <header id="app-topbar" class="topbar"></header>
+        <main class="page-content">
+          <div class="page-header-row">
+            <div>
+              <h1 class="page-title">Maintenance Billing &amp; Society UPI QR</h1>
+              <p class="page-subtitle">Configure the society UPI payment QR code and issue maintenance bills.</p>
+            </div>
+          </div>
+
+          <section class="grid-2" style="margin-bottom:20px;">
+            <div class="card">
+              <div class="card-header">
+                <h2 class="card-title">Create Maintenance Bill</h2>
+              </div>
+              <div id="bill-alert"></div>
+              <form id="create-bill-form">
+                <div class="form-group">
+                  <label class="form-label" for="bill-flat-select">Target Flat(s)</label>
+                  <select id="bill-flat-select" class="form-control" required></select>
+                </div>
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label class="form-label" for="bill-title">Bill Title</label>
+                    <input id="bill-title" type="text" class="form-control" placeholder="e.g. Monthly Maintenance" required />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="bill-period">Billing Period</label>
+                    <input id="bill-period" type="text" class="form-control" placeholder="e.g. Nov 2026" required />
+                  </div>
+                </div>
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label class="form-label" for="bill-amount">Amount (₹)</label>
+                    <input id="bill-amount" type="number" step="0.01" min="1" class="form-control" placeholder="2500" required />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="bill-due">Due Date</label>
+                    <input id="bill-due" type="date" class="form-control" required />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="bill-desc">Notes / Breakdown</label>
+                  <input id="bill-desc" type="text" class="form-control" placeholder="Water, Lift, Security & Common Area Charges" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="bill-doc-file">Optional Bill Document (PDF / Image)</label>
+                  <input id="bill-doc-file" type="file" class="form-control" accept="image/*,application/pdf" />
+                  <div id="bill-doc-preview" style="margin-top:8px;"></div>
+                </div>
+                <button type="submit" class="btn btn-primary">Issue Maintenance Bill</button>
+              </form>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h2 class="card-title">Society UPI Payment QR Configuration</h2>
+              </div>
+              <div id="upi-alert"></div>
+              <form id="upi-config-form">
+                <div class="form-group">
+                  <label class="form-label" for="upi-id-input">Society UPI ID</label>
+                  <input id="upi-id-input" type="text" class="form-control" placeholder="society@upi" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="upi-qr-file">Upload Society UPI QR Image</label>
+                  <input id="upi-qr-file" type="file" class="form-control" accept="image/*" />
+                  <div id="upi-qr-preview" style="margin-top:8px;"></div>
+                </div>
+                <div style="margin-bottom:14px;">
+                  <div style="font-size:12px;color:#6B7280;margin-bottom:6px;">Current Active UPI QR Shown to Residents:</div>
+                  <img id="upi-current-img" class="upi-preview-thumb" alt="Society UPI QR" style="display:none;" />
+                </div>
+                <button type="submit" class="btn btn-outline">Save Society UPI Settings</button>
+              </form>
+            </div>
+          </section>
+
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">Issued Maintenance Bills</h2>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Flat &amp; Resident</th>
+                    <th>Bill &amp; Period</th>
+                    <th>Amount</th>
+                    <th>Due Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-bills-tbody">
+                  <tr><td colspan="6" class="empty-state">Loading...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script type="module" src="/js/admin/payments.js"></script>
+  </body>
+</html>

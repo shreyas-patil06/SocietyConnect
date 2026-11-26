@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maintenance Staff Dashboard — SocietyConnect</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside id="app-sidebar" class="sidebar"></aside>
+      <div class="main-wrapper">
+        <header id="app-topbar" class="topbar"></header>
+        <main class="page-content">
+          <div class="page-header-row">
+            <div>
+              <h1 class="page-title">Maintenance Staff Dashboard</h1>
+              <p class="page-subtitle">Track complaints assigned to you and update work progress.</p>
+            </div>
+            <div class="page-actions">
+              <a href="/pages/staff/assigned-complaints.html" class="btn btn-primary">Manage Assigned Tickets</a>
+            </div>
+          </div>
+
+          <section class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <span class="kpi-label">Assigned Tickets</span>
+                <span class="kpi-icon">📋</span>
+              </div>
+              <div class="kpi-value-row">
+                <span id="kpi-assigned-total" class="kpi-value">0</span>
+              </div>
+              <span class="kpi-sub">Total tickets assigned</span>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <span class="kpi-label">Awaiting Acceptance</span>
+                <span class="kpi-icon">⏳</span>
+              </div>
+              <div class="kpi-value-row">
+                <span id="kpi-awaiting" class="kpi-value">0</span>
+              </div>
+              <span class="kpi-sub">Newly assigned to you</span>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <span class="kpi-label">In Progress</span>
+                <span class="kpi-icon">🔧</span>
+              </div>
+              <div class="kpi-value-row">
+                <span id="kpi-in-progress" class="kpi-value">0</span>
+              </div>
+              <span class="kpi-sub">Active repairs underway</span>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <span class="kpi-label">Resolved</span>
+                <span class="kpi-icon">✓</span>
+              </div>
+              <div class="kpi-value-row">
+                <span id="kpi-resolved" class="kpi-value">0</span>
+              </div>
+              <span class="kpi-sub">Completed maintenance tasks</span>
+            </div>
+          </section>
+
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">My Assigned Complaints</h2>
+              <a href="/pages/staff/assigned-complaints.html" class="btn btn-sm btn-outline">View All</a>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Complaint &amp; Flat</th>
+                    <th>Category</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th>Last Updated</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="staff-dashboard-tbody">
+                  <tr><td colspan="6" class="empty-state">Loading...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script type="module" src="/js/staff/dashboard.js"></script>
+  </body>
+</html>

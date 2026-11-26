@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Security Guard Dashboard — SocietyConnect</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/css/guard.css" />
+  </head>
+  <body data-page="guard-dashboard">
+    <div class="app-shell">
+      <aside id="app-sidebar" class="sidebar"></aside>
+      <div class="main-wrapper">
+        <header id="app-topbar" class="topbar"></header>
+        <main class="page-content">
+          <div class="page-header-row">
+            <div>
+              <h1 class="page-title">Security Gate Dashboard</h1>
+              <p class="page-subtitle">Live society gate entries, QR passes, walk-ins, and emergency response.</p>
+            </div>
+            <div class="page-actions">
+              <a href="/pages/guard/walk-in-verification.html" class="btn btn-outline">+ Walk-In OTP Request</a>
+              <a href="/pages/guard/qr-scanner.html" class="btn btn-primary">Scan QR Pass</a>
+            </div>
+          </div>
+
+          <div id="guard-emergency-strip" class="emergency-strip" style="display:none;">
+            <strong id="guard-emergency-text"></strong>
+            <a href="/pages/guard/emergency-alerts.html" class="btn btn-sm btn-danger">Respond Now</a>
+          </div>
+
+          <section class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <span class="kpi-label">Visitors Inside Now</span>
+                <span class="kpi-icon">IN</span>
+              </div>
+              <div class="kpi-value-row">
+                <span id="kpi-checked-in" class="kpi-value">0</span>
+              </div>
+              <span class="kpi-sub">Currently checked in at gate</span>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <span class="kpi-label">Entries Today</span>
+                <span class="kpi-icon">📅</span>
+              </div>
+              <div class="kpi-value-row">
+                <span id="kpi-today-entries" class="kpi-value">0</span>
+              </div>
+              <span class="kpi-sub">Total check-ins recorded today</span>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <span class="kpi-label">Expected Passes</span>
+                <span class="kpi-icon">QR</span>
+              </div>
+              <div class="kpi-value-row">
+                <span id="kpi-active-passes" class="kpi-value">0</span>
+              </div>
+              <span class="kpi-sub">Active resident guest invites</span>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <span class="kpi-label">Pending Walk-Ins</span>
+                <span class="kpi-icon">OTP</span>
+              </div>
+              <div class="kpi-value-row">
+                <span id="kpi-pending-walkins" class="kpi-value">0</span>
+              </div>
+              <span class="kpi-sub">Awaiting resident/OTP verification</span>
+            </div>
+          </section>
+
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title">Recent Gate Entry &amp; Exit Activity</h2>
+                <p class="card-subtitle">Quick check-out for visitors still inside</p>
+              </div>
+              <a href="/pages/guard/visitor-history.html" class="btn btn-sm btn-outline">Full History</a>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Visitor</th>
+                    <th>Entry Method</th>
+                    <th>Check-In Time</th>
+                    <th>Status</th>
+                    <th>Action / Check-Out</th>
+                  </tr>
+                </thead>
+                <tbody id="guard-recent-logs-tbody">
+                  <tr><td colspan="5" class="empty-state">Loading...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script type="module" src="/js/guard/dashboard.js"></script>
+  </body>
+</html>

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Residents &amp; Flats — SocietyConnect</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+  </head>
+  <body data-page="admin-residents">
+    <div class="app-shell">
+      <aside id="app-sidebar" class="sidebar"></aside>
+      <div class="main-wrapper">
+        <header id="app-topbar" class="topbar"></header>
+        <main class="page-content">
+          <div class="page-header-row">
+            <div>
+              <h1 class="page-title">Residents &amp; Flats Management</h1>
+              <p class="page-subtitle">Add flats, register residents, and manage occupancy status.</p>
+            </div>
+          </div>
+
+          <section class="grid-2" style="margin-bottom:20px;">
+            <div class="card">
+              <div class="card-header">
+                <h2 class="card-title">Add New Flat</h2>
+              </div>
+              <div id="flat-alert"></div>
+              <form id="add-flat-form">
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label class="form-label" for="flat-wing">Wing / Tower</label>
+                    <input id="flat-wing" type="text" class="form-control" placeholder="e.g. C" required />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="flat-num">Flat Number</label>
+                    <input id="flat-num" type="text" class="form-control" placeholder="e.g. 301" required />
+                  </div>
+                </div>
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label class="form-label" for="flat-floor">Floor</label>
+                    <input id="flat-floor" type="number" class="form-control" value="3" min="0" required />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="flat-area">Area (sq.ft)</label>
+                    <input id="flat-area" type="number" class="form-control" value="1350" min="200" required />
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Flat</button>
+              </form>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h2 class="card-title">Register Resident Account</h2>
+              </div>
+              <div id="res-alert"></div>
+              <form id="add-resident-form">
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label class="form-label" for="res-name">Full Name</label>
+                    <input id="res-name" type="text" class="form-control" required />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="res-phone">Mobile Number</label>
+                    <input id="res-phone" type="tel" class="form-control" required />
+                  </div>
+                </div>
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label class="form-label" for="res-email">Email Address</label>
+                    <input id="res-email" type="email" class="form-control" required />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="res-password">Initial Password</label>
+                    <input id="res-password" type="password" class="form-control" minlength="6" required />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="res-flat-select">Assign Flat</label>
+                  <select id="res-flat-select" class="form-control" required></select>
+                </div>
+                <button type="submit" class="btn btn-primary">Create Resident</button>
+              </form>
+            </div>
+          </section>
+
+          <div class="card" style="margin-bottom:20px;">
+            <div class="card-header">
+              <h2 class="card-title">Registered Residents</h2>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Resident</th>
+                    <th>Phone</th>
+                    <th>Flat</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-residents-tbody">
+                  <tr><td colspan="5" class="empty-state">Loading...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">Society Flats Directory</h2>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Flat</th>
+                    <th>Floor</th>
+                    <th>Area</th>
+                    <th>Occupancy</th>
+                    <th>Assigned Residents</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-flats-tbody">
+                  <tr><td colspan="5" class="empty-state">Loading...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script type="module" src="/js/admin/residents.js"></script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emergency Alerts — SocietyConnect</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside id="app-sidebar" class="sidebar"></aside>
+      <div class="main-wrapper">
+        <header id="app-topbar" class="topbar"></header>
+        <main class="page-content">
+          <div class="page-header-row">
+            <div>
+              <h1 class="page-title">Emergency Alerts Monitor</h1>
+              <p class="page-subtitle">Real-time resident emergency history, guard response, and resolution status.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Resident &amp; Flat</th>
+                    <th>Emergency &amp; Details</th>
+                    <th>Severity</th>
+                    <th>Status</th>
+                    <th>Responder &amp; Notes</th>
+                    <th>Triggered At</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-emergencies-tbody">
+                  <tr><td colspan="7" class="empty-state">Loading...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script type="module" src="/js/admin/emergency.js"></script>
+  </body>
+</html>

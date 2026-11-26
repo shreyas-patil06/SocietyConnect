@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Complaint Details — SocietyConnect</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/css/staff.css" />
+  </head>
+  <body data-page="staff-details">
+    <div class="app-shell">
+      <aside id="app-sidebar" class="sidebar"></aside>
+      <div class="main-wrapper">
+        <header id="app-topbar" class="topbar"></header>
+        <main class="page-content">
+          <div class="page-header-row">
+            <div>
+              <h1 id="det-title" class="page-title">Complaint Details</h1>
+              <p class="page-subtitle">Inspect resident issue details and update resolution progress.</p>
+            </div>
+            <div class="page-actions">
+              <a href="/pages/staff/assigned-complaints.html" class="btn btn-outline">← Back to Tickets</a>
+              <button id="det-accept-btn" type="button" class="btn btn-primary">Accept Complaint</button>
+            </div>
+          </div>
+
+          <div id="det-alert"></div>
+
+          <section class="complaint-detail-grid">
+            <div class="bento-col">
+              <div class="card">
+                <div class="card-header">
+                  <h2 class="card-title">Issue Description</h2>
+                </div>
+                <p id="det-desc" style="color:#374151;line-height:1.65;margin-bottom:16px;"></p>
+                <div id="det-photo-box" class="complaint-photo-box"></div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <h2 class="card-title">Update Progress &amp; Resolution</h2>
+                </div>
+                <form id="det-update-form">
+                  <div class="form-group">
+                    <label class="form-label" for="det-new-status">Status</label>
+                    <select id="det-new-status" class="form-control">
+                      <option value="In Progress">In Progress</option>
+                      <option value="Resolved">Resolved</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="det-notes">Progress / Resolution Notes</label>
+                    <textarea id="det-notes" class="form-control" required></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Save Progress</button>
+                </form>
+              </div>
+            </div>
+
+            <div class="bento-col">
+              <div class="card">
+                <div class="card-header">
+                  <h2 class="card-title">Ticket Metadata</h2>
+                </div>
+                <div class="meta-kv-list">
+                  <div class="meta-kv-item"><span>Flat</span><span id="det-flat">—</span></div>
+                  <div class="meta-kv-item"><span>Resident</span><span id="det-resident">—</span></div>
+                  <div class="meta-kv-item"><span>Category</span><span id="det-category">—</span></div>
+                  <div class="meta-kv-item"><span>Priority</span><span id="det-priority">—</span></div>
+                  <div class="meta-kv-item"><span>Status</span><span id="det-status">—</span></div>
+                  <div class="meta-kv-item"><span>Submitted</span><span id="det-created">—</span></div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+    <script type="module" src="/js/staff/complaints.js"></script>
+  </body>
+</html>

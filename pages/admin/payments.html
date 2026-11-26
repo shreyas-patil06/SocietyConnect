@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Receipt Verification — SocietyConnect</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/css/admin.css" />
+  </head>
+  <body data-page="admin-payments">
+    <div class="app-shell">
+      <aside id="app-sidebar" class="sidebar"></aside>
+      <div class="main-wrapper">
+        <header id="app-topbar" class="topbar"></header>
+        <main class="page-content">
+          <div class="page-header-row">
+            <div>
+              <h1 class="page-title">UPI Payment Receipt Verification</h1>
+              <p class="page-subtitle">Inspect resident-uploaded payment screenshots and verify or reject them.</p>
+            </div>
+            <div class="page-actions">
+              <select id="payment-status-filter" class="form-control" style="width:auto;">
+                <option value="all">All Receipts</option>
+                <option value="Payment Submitted">Pending Verification</option>
+                <option value="Verified">Verified</option>
+                <option value="Rejected">Rejected</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Resident &amp; Flat</th>
+                    <th>Bill</th>
+                    <th>Transaction Ref</th>
+                    <th>Amount Paid</th>
+                    <th>Status</th>
+                    <th>Submitted</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-receipts-tbody">
+                  <tr><td colspan="7" class="empty-state">Loading...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <div id="verify-receipt-modal" class="modal-backdrop">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3 class="modal-title">Inspect Payment Receipt</h3>
+          <button id="close-verify-modal" type="button" class="modal-close">✕</button>
+        </div>
+        <div id="ver-modal-alert"></div>
+        <p id="ver-meta" style="font-size:13.5px;font-weight:600;color:#2563EB;margin-bottom:12px;"></p>
+        <input id="ver-receipt-id" type="hidden" />
+        <img id="ver-receipt-img" class="receipt-preview-img" alt="Payment Receipt Preview" />
+        <div style="margin:10px 0 14px;">
+          <a id="ver-receipt-link" target="_blank" rel="noopener" class="btn btn-sm btn-outline">Open Full File in New Tab</a>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="ver-remarks">Admin Remarks (required if rejecting)</label>
+          <textarea id="ver-remarks" class="form-control" placeholder="Verification note or rejection reason..."></textarea>
+        </div>
+        <div id="ver-action-buttons" style="display:flex;gap:10px;">
+          <button id="ver-approve-btn" type="button" class="btn btn-success" style="flex:1;">Verify Payment</button>
+          <button id="ver-reject-btn" type="button" class="btn btn-danger" style="flex:1;">Reject Receipt</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/js/admin/payments.js"></script>
+  </body>
+</html>

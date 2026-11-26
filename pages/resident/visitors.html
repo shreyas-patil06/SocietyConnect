@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visitors &amp; QR Passes — SocietyConnect</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/css/resident.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside id="app-sidebar" class="sidebar"></aside>
+      <div class="main-wrapper">
+        <header id="app-topbar" class="topbar"></header>
+        <main class="page-content">
+          <div class="page-header-row">
+            <div>
+              <h1 class="page-title">Visitors &amp; QR Passes</h1>
+              <p class="page-subtitle">Generate guest QR invitations, approve walk-in visitors, and review gate history.</p>
+            </div>
+          </div>
+
+          <section class="grid-2" style="margin-bottom:20px;">
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h2 class="card-title">Invite Guest &amp; Generate QR Pass</h2>
+                  <p class="card-subtitle">Each invitation creates a unique, tamper-proof QR code.</p>
+                </div>
+              </div>
+              <div id="invite-alert"></div>
+              <form id="invite-guest-form">
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label class="form-label" for="guest-name">Guest Full Name</label>
+                    <input id="guest-name" type="text" class="form-control" placeholder="e.g. Rohan Mehta" required />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="guest-phone">Guest Mobile Number</label>
+                    <input id="guest-phone" type="tel" class="form-control" placeholder="e.g. 9820012345" required />
+                  </div>
+                </div>
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label class="form-label" for="guest-type">Visitor Type</label>
+                    <select id="guest-type" class="form-control">
+                      <option value="Guest">Guest</option>
+                      <option value="Delivery">Delivery</option>
+                      <option value="Cab">Cab</option>
+                      <option value="Service">Service / Repair</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="guest-pass-type">Pass Mode</label>
+                    <select id="guest-pass-type" class="form-control">
+                      <option value="Single-Use">Single-Use (One Entry &amp; Exit)</option>
+                      <option value="Multi-Entry">Multi-Entry (Until Expiry)</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label class="form-label" for="guest-hours">Validity Window</label>
+                    <select id="guest-hours" class="form-control">
+                      <option value="6">6 Hours</option>
+                      <option value="12">12 Hours</option>
+                      <option value="24" selected>24 Hours</option>
+                      <option value="72">3 Days</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="guest-purpose">Purpose</label>
+                    <input id="guest-purpose" type="text" class="form-control" placeholder="Family visit / Package" />
+                  </div>
+                </div>
+                <button id="invite-submit-btn" type="submit" class="btn btn-primary">
+                  Generate Guest QR Pass
+                </button>
+              </form>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h2 class="card-title">Personal Resident QR Pass</h2>
+                  <p class="card-subtitle">Unique personal pass linked to your flat profile</p>
+                </div>
+              </div>
+              <div class="qr-pass-box">
+                <img id="personal-qr-img" alt="Personal QR Code" />
+                <span id="personal-qr-token" class="qr-token-code">Loading...</span>
+                <button id="regen-personal-qr-btn" type="button" class="btn btn-sm btn-outline">
+                  Regenerate Personal QR
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <div class="card" style="margin-bottom:20px;">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title">Walk-In Visitor Approval Requests</h2>
+                <p class="card-subtitle">Approve or reject unexpected visitors waiting at the society gate</p>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Visitor</th>
+                    <th>Purpose</th>
+                    <th>Requested By Guard</th>
+                    <th>Status</th>
+                    <th>Time</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="walkin-requests-tbody">
+                  <tr><td colspan="6" class="empty-state">Loading...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card" style="margin-bottom:20px;">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title">Expected Visitors &amp; Active Guest Passes</h2>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Guest</th>
+                    <th>Type</th>
+                    <th>Purpose</th>
+                    <th>Expires At</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="guest-passes-tbody">
+                  <tr><td colspan="6" class="empty-state">Loading...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">Visitor Check-In &amp; Check-Out History</h2>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Visitor</th>
+                    <th>Entry Method</th>
+                    <th>Check-In Time</th>
+                    <th>Check-Out Time</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="visitor-history-tbody">
+                  <tr><td colspan="5" class="empty-state">Loading...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <div id="guest-qr-modal" class="modal-backdrop">
+      <div class="modal-card" style="max-width:420px;text-align:center;">
+        <div class="modal-header">
+          <h3 id="modal-qr-title" class="modal-title">Guest QR Pass</h3>
+          <button id="close-qr-modal-btn" class="modal-close" type="button">✕</button>
+        </div>
+        <div class="qr-pass-box">
+          <img id="modal-qr-img" alt="Guest QR Code" />
+          <span id="modal-qr-token" class="qr-token-code"></span>
+          <p id="modal-qr-meta" style="font-size:12.5px;color:#6B7280;"></p>
+          <a id="modal-qr-download" download="society-guest-pass.png" class="btn btn-primary btn-sm">
+            Download QR Pass
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/js/resident/visitors.js"></script>
+  </body>
+</html>

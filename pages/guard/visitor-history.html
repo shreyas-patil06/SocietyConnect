@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visitor History — SocietyConnect</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+  </head>
+  <body data-page="guard-history">
+    <div class="app-shell">
+      <aside id="app-sidebar" class="sidebar"></aside>
+      <div class="main-wrapper">
+        <header id="app-topbar" class="topbar"></header>
+        <main class="page-content">
+          <div class="page-header-row">
+            <div>
+              <h1 class="page-title">Visitor Entry &amp; Exit History</h1>
+              <p class="page-subtitle">Complete audit log of all gate check-ins and check-outs.</p>
+            </div>
+            <div class="page-actions">
+              <select id="history-status-filter" class="form-control" style="width:auto;">
+                <option value="all">All Statuses</option>
+                <option value="Checked In">Currently Inside</option>
+                <option value="Checked Out">Checked Out</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Visitor</th>
+                    <th>Flat &amp; Host</th>
+                    <th>Method</th>
+                    <th>Check-In Time</th>
+                    <th>Check-Out Time</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="guard-history-tbody">
+                  <tr><td colspan="6" class="empty-state">Loading...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script type="module" src="/js/guard/visitor-history.js"></script>
+  </body>
+</html>

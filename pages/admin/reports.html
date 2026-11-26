@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Society Reports — SocietyConnect</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+  </head>
+  <body data-page="admin-reports">
+    <div class="app-shell">
+      <aside id="app-sidebar" class="sidebar"></aside>
+      <div class="main-wrapper">
+        <header id="app-topbar" class="topbar"></header>
+        <main class="page-content">
+          <div class="page-header-row">
+            <div>
+              <h1 class="page-title">Financial &amp; Operational Reports</h1>
+              <p class="page-subtitle">Live society analytics compiled directly from PostgreSQL/SQLite records.</p>
+            </div>
+            <div class="page-actions">
+              <button id="export-csv-btn" type="button" class="btn btn-primary">Download Billing CSV</button>
+            </div>
+          </div>
+
+          <section class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-top"><span class="kpi-label">Verified Revenue</span></div>
+              <div class="kpi-value-row"><span id="rep-collected" class="kpi-value">₹0</span></div>
+              <span class="kpi-sub">Total verified maintenance paid</span>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-top"><span class="kpi-label">Outstanding Dues</span></div>
+              <div class="kpi-value-row"><span id="rep-pending" class="kpi-value">₹0</span></div>
+              <span class="kpi-sub">Unpaid or pending verification</span>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-top"><span class="kpi-label">Total Gate Entries</span></div>
+              <div class="kpi-value-row"><span id="rep-visitors" class="kpi-value">0</span></div>
+              <span class="kpi-sub">All recorded visitor logs</span>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-top"><span class="kpi-label">Complaints Resolved</span></div>
+              <div class="kpi-value-row"><span id="rep-complaints" class="kpi-value">0 / 0</span></div>
+              <span class="kpi-sub">Resolved vs total complaints</span>
+            </div>
+          </section>
+
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">Maintenance Billing Ledger</h2>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Flat</th>
+                    <th>Bill Title</th>
+                    <th>Period</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="reports-bills-tbody">
+                  <tr><td colspan="5" class="empty-state">Loading...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script type="module" src="/js/admin/dashboard.js"></script>
+  </body>
+</html>

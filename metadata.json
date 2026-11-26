@@ -1,0 +1,6 @@
+{
+  "name": "SocietyConnect",
+  "description": "Smart Housing Society Management System with QR/OTP Visitor Security, Complaint Tracking, Maintenance Billing, and Emergency Alerts.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": []
+}
